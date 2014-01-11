@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.onlineForLife" version="1.110" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Online for Life</name>
+<widget id="com.phonegap.onlineForLife" version="1.111" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Online for Life - Links</name>
     <description>
         Online for Life is a compassionate, technology-driven non-profit organization committed to rescuing children and families from abortion.
     </description>
