@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InAppBrowser.addEventListener Example</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+         var ref = window.open('http://touchpunch.furf.com', '_blank', 'location=yes');
+         ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
+         ref.addEventListener('loadstop', function(event) { alert('stop: ' + event.url); });
+         ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
+         ref.addEventListener('exit', function(event) { alert(event.type); });
+    }
+
+    </script>
+  </head>
+  <body>
+  Load External URL
+
+  <br>
+    <a href="http://www.google.com">google.com</a>
+    <br>
+    <a href="#" onclick="window.open('http://www.facebook.com', '_blank', 'location=yes');">facebook.com</a>
+    <br>
+    <a href="#" onclick="window.open('http://www.facebook.com', '_blank', 'location=no');">facebook.com - no location</a>
+    <br>
+    <a href="#" onclick="window.open('http://www.facebook.com', '_system', 'location=yes');">facebook.com - system</a>
+    <br>
+    <a href="dev.html">Dev</a>
+  </body>
+</html>
