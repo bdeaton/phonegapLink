@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, maximum-scale=1.0, user-scalable=no;"/>
+	
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    
+
+	<link rel="stylesheet" href="css/reset-min.css" />
+	<link rel="stylesheet" href="css/libraries/jquery.mobile-1.3.2.min.css" />
+    <link href='css/fonts.css' rel='stylesheet' type='text/css'>
+	<link href="css/font-awesome.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/base.css?ver=12.19.1" />
+	<link rel="stylesheet" href="css/register-login.css?ver=12.19.1" />
+
+	<script src="js/libraries/jquery-1.9.1.min.js"></script>
+	<script src="js/libraries/jquery.mobile-1.3.2.min.js"></script>
+	<script src="js/libraries/jquery-ui.min.js"></script>
+</head>
+<body class="body-ofl body-register-login">
+	<button id="registerButton" type="submit">register</button>
+	<button id="loginButton" type="submit">login - user</button>
+	<button id="loginButtonAdmin" type="submit">login - admin</button>
+	<button id="logoutButton" type="submit">logout</button>
+	<button id="getEvents" type="submit">getEvents</button>
+	<button id="getUpdates" type="submit">getUpdates</button>
+	<button id="clearConsole" type="submit">Clear Console</button>
+	<button id="reloadPage" type="submit">Reload</button>
+	
+	<ul id="console">
+	
+	</ul>
+	<script src="js/libraries/firebase.js"></script>
+	<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase-simple-login.js'></script>	
+
+	<script>
+		var firebaseUrl =  new Firebase('https://ofl.firebaseio.com');
+		var auth = new FirebaseSimpleLogin(firebaseUrl, function(error, user) {
+			if (error) {
+				console.log('error');
+				console.log(error);
+				$('#console').append('<li>'+error+'</li>');
+				return;
+			}
+			if (user) {
+				// User is already logged in.
+				console.log(user);
+				$('#console').append('<li>'+user.email+'</li>');
+			} else {
+				// User is logged out.
+				console.log('no user');
+				$('#console').append('<li>no user</li>');
+			}
+		});
+		$("#registerButton").on("click", function() {
+			console.log('reg clicked');
+			var email = 'brianpray4@brian.com';
+			var password = 'password1';
+			auth.createUser(email, password, function(error,  user) {
+				if (!error) {
+					console.log('no error');
+					console.log(user.email);
+					console.log(user);
+					$('#console').append('<li>'+user.email+'</li>');
+
+
+					var usersUrl = 'https://ofl.firebaseio.com/users/'+user.id;
+					var usersData = new Firebase(usersUrl);
+
+					var userId = user.id;
+					var userEmail = user.email;
+					var userName = 'brian';
+					var userZip = '91107';
+					var pushData = { id: userId, email: userEmail, name: userName, zip: userZip };
+					usersData.push(pushData);
+
+
+					
+				} else {
+					console.log('error');
+					console.log(error);
+					$('#console').append('<li>'+error+'</li>');
+				}
+			});
+		});
+		$("#loginButton").on("click", function() {
+			console.log('login clicked');
+			var email = 'brian@brian.com';
+			var password = 'password1';
+			auth.login('password', {
+			  email: email,
+			  password: password,
+			  rememberMe: false
+			});
+		});
+		$("#loginButtonAdmin").on("click", function() {
+			console.log('login clicked');
+			var email = 'tgerwing@onlineforlife.org';
+			var password = 'online4life220';
+			//auth.auth('wWHtRZLdybxVBALNg6VP6gOzUSibWeYFVVrOIlC0');
+			auth.login('password', {
+			  email: email,
+			  password: password,
+			  rememberMe: false
+			});
+		});
+		$("#logoutButton").on("click", function() {
+			console.log('logout clicked');
+			auth.logout();
+		});
+		$("#clearConsole").on("click", function() {
+			$('#console').empty();
+		});
+		$("#reloadPage").on("click", function() {
+			location.reload();
+		});
+		
+		$("#getEvents").on("click", function() {
+			var dbUrl = 'https://ofl.firebaseio.com/events';
+			var myDataRef = new Firebase(dbUrl);
+		
+			myDataRef.on('child_added', function(snapshot) {
+				var message = snapshot.val();
+	
+				var eventId = message.id;
+				var eventTitle = message.title;
+				var eventDescription = message.description;
+	
+				var output = '';
+				output += 'eventId: ' + eventId + '\n';
+				output += 'eventTitle: ' + eventTitle + '\n';
+				output += 'eventDescription: ' + eventDescription + '\n';
+				//console.log(output);
+				$('#console').append('<li>'+eventTitle+'</li>');
+					
+			});
+			
+		});
+
+		$("#getUpdates").on("click", function() {
+			var dbUrl = 'https://ofl.firebaseio.com/updates';
+			var myDataRef = new Firebase(dbUrl);
+		
+			myDataRef.on('child_added', function(snapshot) {
+				var message = snapshot.val();
+	
+				var eventId = message.id;
+				var eventTitle = message.title;
+				var eventDescription = message.description;
+	
+				var output = '';
+				output += 'eventId: ' + eventId + '\n';
+				//console.log(output);
+				$('#console').append('<li>'+eventId+'</li>');
+					
+			});
+			
+		});
+		
+		
+	</script>
+	<a href="home.html" data-ajax="false">Home</a>
+</body>
+</html>

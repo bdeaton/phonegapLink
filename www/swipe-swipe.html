@@ -1,0 +1,54 @@
+
+<!DOCTYPE HTML> 
+<html>
+<head>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/> 
+<link href='js/plugins/style.css' rel='stylesheet'/>
+</head>
+<body>
+
+<h1><a href="http://www.jqueryscript.net">Swipe</a></h1>
+
+
+<h2>250px wide</h2>
+
+<div id='slider1' class='swipe' style='width:250px'>
+  <ul>
+    <li style='display:block;width:250px;height:100px;background:green;'>
+		<p class="action-text">Woman in Nebraska just called an OFL agent</p>
+		<i class="action-step"></i>
+	</li>
+    <li style='display:none;width:250px;height:100px;background:blue;'></li>
+  </ul>
+</div>
+
+
+<div id='slider2' class='swipe' style='width:250px'>
+  <ul>
+    <li style='display:block;width:250px;height:100px;background:green;'>
+		<p class="action-text">Woman in Nebraska just called an OFL agent</p>
+		<i class="action-step"></i>
+	</li>
+    <li style='display:none;width:250px;height:100px;background:blue;'></li>
+  </ul>
+</div>
+
+
+<script src="js/libraries/jquery-1.9.1.min.js"></script>
+<script src="js/libraries/jquery.mobile-1.3.2.min.js"></script>
+<script src="js/libraries/jquery-ui.min.js"></script>
+
+
+<script src="js/plugins/swipe-1.01.js"></script>
+<script>
+	var $test1 = $('#slider1').get(0);
+	new Swipe($test1);
+	var $test2 = $('#slider2').get(0);
+	new Swipe($test2);
+
+</script>
+    <br>
+    <a href="dev.html">Dev</a>
+
+</body> 
+</html> 

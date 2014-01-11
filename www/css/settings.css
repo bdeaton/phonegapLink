@@ -1,0 +1,97 @@
+.icon-settings{
+	text-align:center;
+	margin:5px 0 0px;
+}
+	.icon-settings i.fa{
+		font-size: 9.13em;
+		color: #e7eae9;
+	}
+	.icon-settings p{
+		font-size:2.85em;
+		font-family:Andada;
+		text-align:center;
+		text-transform:uppercase;
+		color:#c85129;
+		margin:34px auto 0;
+		letter-spacing: 0.1em;
+	}
+	
+	ul.settings-list{
+		margin: 46px 0 0 34px;
+		position: relative;
+	}
+		ul.settings-list li{
+			margin-top:35px;
+			1position:absolute;
+		}
+		ul.settings-list li.first{
+			margin-top:0;
+		}
+		ul.settings-list li.link-settings-push{
+			top:0;
+		}
+		ul.settings-list li.link-settings-ofl{
+			top:65px;
+		}
+		ul.settings-list li.link-settings-privacy{
+			top:160px;
+		}
+		
+			ul.settings-list li span{
+				font-family: Oswald;
+				font-size: 1.5em;
+				font-weight: 300;
+				letter-spacing: 4.5px;
+			}
+			ul.settings-list li i.fa{
+				font-weight: 300;
+				margin-left:15px;
+				color:#c85129;
+				font-size:2.7em;
+				top: 10px;
+				position: relative;
+			}
+		ul.settings-list li a{
+			
+		}
+			ul.settings-list li a i.fa{
+				font-size: 1.4em;
+			}
+			
+			
+			.settings-content{
+				overflow:hidden;
+				1display:none;
+			}
+			.settings-content.content-open{
+
+			}
+			
+				ul.settings-list li .settings-content span{
+					font-family:arial;
+					letter-spacing:0;
+				}
+
+				.settings-content label{
+					outline:none;
+					margin:13px 10px 0 0;
+					float:left;
+				}
+				.settings-content div.ui-slider-switch.ui-mini{
+					margin-top:10px;
+					float:left;
+					width:75px;
+				}
+			
+			.settings-content .ui-controlgroup .ui-checkbox .ui-btn{
+				width:400px;	
+			}
+			.settings-content input[name=checkbox-push]{
+				display:none;
+			}
+			
+			
+			
+			
+			
+			
