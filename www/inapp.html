@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InAppBrowser.executeScript Example</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="InAppBrowser.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for Cordova to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    
+    function onDeviceReady() {
+        window.open('http://apache.org', '_system', 'location=yes');
+    }
+
+    </script>
+  </head>
+  <body>
+  	<div id="debug">loading</div>
+    <br>
+    <a href="dev.html">Dev</a>
+  </body>
+</html>
